@@ -1,0 +1,58 @@
+function fetchData(url, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", url);
+
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      callback(null, xhr.responseText);
+    } else {
+      callback("Error");
+    }
+  };
+
+  xhr.send();
+}
+
+fetchData("https://api.example.com/data", function(err, data) {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(data);
+  }
+});
+
+
+
+
+
+function repeat(action, times) {
+  for (var i = 0; i < times; i++) {
+    action(i);
+  }
+}
+
+function sayHi(index) {
+  console.log("Hi " + index);
+}
+
+repeat(sayHi, 3);
+
+
+
+
+
+function getData(callback) {
+  var data = { name: "John", age: 30 };
+  setTimeout(function() {
+    callback(data);
+  }, 1000);
+}
+
+getData(function(data) {
+  console.log(data.name + " is " + data.age + " years old.");
+});
+
+
+
+
+
